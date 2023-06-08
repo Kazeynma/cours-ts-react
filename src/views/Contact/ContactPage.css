@@ -1,0 +1,39 @@
+.contact-container {
+  background-color: #f7f7f7;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtitle-contact {
+  color: gray;
+  text-align: center;
+  width: 90%;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-info-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50em;
+}
+
+.img-contact-container {
+  width: 40em;
+  height: 45em;
+}
+
+.img-contact-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

@@ -1,0 +1,34 @@
+.article-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  text-align: left;
+  padding: 20px;
+  width: 60%;
+  height: 30em;
+  background-color: #fff;
+  box-shadow: 4px 8px 20px #45567121;
+}
+.category {
+  font-weight: bolder;
+  color: #1073b1;
+}
+
+h2 {
+  font-family: 'Pacifico';
+  font-size: 2em;
+}
+.article-subcontainer {
+  display: flex;
+  margin-top: 5px;
+}
+
+.sidebar-left {
+  width: 50%;
+  margin-right: 10px;
+}
+
+.img-article {
+  height: 25em;
+  border-radius: 15px;
+}

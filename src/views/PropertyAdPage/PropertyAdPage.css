@@ -1,0 +1,29 @@
+.property-ad-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.category-card-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.ad-container {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ad-container-empty {
+  height: 40em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

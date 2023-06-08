@@ -1,0 +1,55 @@
+#banner.homePage-container {
+  height: 37em;
+  padding: 0;
+}
+.homePage-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+.side-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: rgb(206, 206, 206);
+  width: 50%;
+}
+
+h1 {
+  font-family: 'Pacifico';
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  width: 80%;
+  text-align: left;
+}
+
+.slogan {
+  color: rgb(116, 116, 116);
+  font-family: 'cursive';
+  font-size: 26px;
+}
+
+.side-right {
+  height: 100%;
+  width: 50%;
+}
+
+.img-homePage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.category-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  height: 50%;
+}

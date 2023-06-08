@@ -1,0 +1,26 @@
+.footer-container {
+  background-color: rgb(36, 36, 36);
+  padding: 40px;
+}
+.footer-subcontainer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  color: rgb(177, 177, 177);
+}
+
+.title {
+  color: white;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.logo-footer {
+  width: 10em;
+}

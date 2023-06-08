@@ -1,0 +1,30 @@
+.ad-card-container {
+  width: 30em;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.title-container {
+  padding: 5px;
+  font-size: larger;
+  text-align: left;
+  font-weight: 600;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 5px;
+  padding: 10px;
+}
+
+.ad-price {
+  font-weight: 600;
+  font-size: larger;
+  font-family: 'Pacifico';
+}
