@@ -1,3 +1,4 @@
+import { AppProvider } from './utils/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -8,6 +9,7 @@ import HomePage from './views/HomePage/HomePage';
 import PropertyAdPage from './views/PropertyAdPage/PropertyAdPage';
 import LoginPage from './views/Login/LoginPage';
 import ContactPage from './views/Contact/ContactPage';
+import UserHomePage from './views/User/UserHomePage';
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
           <Route path="/ad/all" element={<PropertyAdPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/user/home" element={<UserHomePage />} />
         </Routes>
         <Footer />
       </Router>

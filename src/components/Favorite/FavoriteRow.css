@@ -1,0 +1,9 @@
+.favorite-description {
+    display: flex;
+    flex-direction: column
+}
+
+.favorite-icon {
+    color: orange;
+    width: 2em;
+}

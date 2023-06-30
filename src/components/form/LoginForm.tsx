@@ -1,22 +1,57 @@
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AppContext } from '../../utils/context';
 
 //#region import style
 import logo from '../../assets/real-estate-logo.png';
 
+//#region import api functions
+import { login } from '../../api /auth';
+import { updateFavorite } from '../../api /user';
+
+type User = {
+  email: string;
+  password: string;
+};
+
 const LoginForm = () => {
-  const [isParticular, setIsParticular] = useState(true);
+  const [user, setUser] = useState<User>({ email: '', password: '' });
+  const { state, dispatch } = useContext(AppContext)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+
+    console.log(user);
+  };
+
+  const handleClick = async () => {
+    const token = await login(user);
+    if (token.status !== undefined && token.status) {
+      let user = {
+        ...token,
+        favorite: state.favorite
+      }
+      //ajouter la liste dans les utilisateurs
+      if (state.favorite !== 0) {
+        updateFavorite(user.email, state.ads)
+      }
+      localStorage.setItem("user", user)
+
+    }
+  };
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center  lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img className="mx-auto h-14 w-auto" src={logo} alt="Your Company" />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Connexion à un compte {isParticular ? 'particulier' : 'professionel'}
+          Connexion à votre compte
         </h2>
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form className="space-y-6">
           <div>
             <label
               htmlFor="email"
@@ -31,6 +66,8 @@ const LoginForm = () => {
                 type="email"
                 autoComplete="email"
                 required
+                value={user.email}
+                onChange={handleChange}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -57,6 +94,8 @@ const LoginForm = () => {
                 type="password"
                 autoComplete="current-password"
                 required
+                value={user.password}
+                onChange={handleChange}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -64,7 +103,8 @@ const LoginForm = () => {
 
           <div>
             <button
-              type="submit"
+              type="button"
+              onClick={handleClick}
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Se connecter
@@ -73,11 +113,8 @@ const LoginForm = () => {
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          Vous êtes un {isParticular ? 'professionel' : 'particulier'} ?{' '}
-          <span
-            onClick={() => setIsParticular(!isParticular)}
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-          >
+          Pas de compte ?{' '}
+          <span className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
             cliquez ici
           </span>
         </p>

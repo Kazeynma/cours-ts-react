@@ -1,0 +1,29 @@
+.user-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
+}
+
+.contact-card {
+    display: flex;
+    justify-content: space-between;
+    width: 50em;
+}
+
+.user-home-content {
+    display: flex;
+    width: 50em;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.267);
+}
+
+.user-favorite-container {
+    width: 70%;
+
+}

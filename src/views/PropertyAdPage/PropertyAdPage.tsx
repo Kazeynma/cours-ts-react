@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState, useContext } from 'react';
+import { AppContext, InitialStateType } from '../../utils/context';
+import { Ads } from '../../utils/types';
 //#region import component
 import PropertyAdCard from '../../components/PropertyAdCard/PropertyAdCard';
 import CategoryMiniCard from '../../components/CategoryCard/CategoryMiniCard';
@@ -14,24 +15,20 @@ import all from '../../assets/cat-img-all.jpg';
 type Props = {};
 
 const PropertyAdPage = (props: Props) => {
-  const [ads, setAds] = useState<Product[]>([]);
+  const [ads, setAds] = useState<Ads[]>([]);
+  const { state, dispatch } = useContext(AppContext);
 
   useEffect(() => {
+    console.log(state);
     getAds().then((ads) => setAds(ads));
   }, []);
 
-  type Product = {
-    _id: number;
-    id: string;
-    date_pub: string;
-    date_update?: string;
-    description: string;
-    price: number;
-    fee: string;
-    adress: string;
-  };
+  useEffect(() => {
+    console.log(state.favorite);
+    console.log(state.ads);
+  }, []);
 
-  const getAds = async (): Promise<Product[]> => {
+  const getAds = async (): Promise<Ads[]> => {
     const response = await fetch('http://localhost:3003/product', {
       method: 'GET',
       headers: {
@@ -41,6 +38,11 @@ const PropertyAdPage = (props: Props) => {
 
     return await response.json();
   };
+
+  const addInFavorite = (newState: InitialStateType) => {
+    dispatch(newState);
+  };
+
   return (
     <>
       <div className="property-ad-container">
@@ -50,27 +52,27 @@ const PropertyAdPage = (props: Props) => {
           <CategoryMiniCard title="Appartements" img={flat} />
           <CategoryMiniCard title="Nos autres locaux" img={project} />
         </div>
-        <div className="ad-container">
-          {ads.length !== 0 ? (
-            <div>
-              {ads.map((product) => (
-                <PropertyAdCard
-                  id={product.id}
-                  _id={product._id}
-                  date_pub={product.date_update ? product.date_update : product.date_pub}
-                  description={product.description}
-                  price={product.price}
-                  fee={product.fee}
-                  adress={product.adress}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="ad-container-empty">
-              <h1>Oops nous n'avons plus d'annonces :(</h1>
-            </div>
-          )}
-        </div>
+        {ads.length !== 0 ? (
+          <div className="ad-container">
+            {ads.map((product) => (
+              <PropertyAdCard
+                state={state}
+                addInFavorite={addInFavorite}
+                id={product.id}
+                _id={product._id}
+                date_pub={product.date_update ? product.date_update : product.date_pub}
+                price={product.price}
+                fee={product.fee}
+                adress={product.adress}
+                description={product.description}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="ad-container-empty">
+            <h1>Oops nous n'avons plus d'annonces :( </h1>
+          </div>
+        )}
       </div>
     </>
   );
