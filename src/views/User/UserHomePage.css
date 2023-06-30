@@ -19,9 +19,11 @@
 .user-info {
     display: flex;
     flex-direction: column;
-    width: 30%
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.267);
 }
 
 .user-favorite-container {
-    width: 70%
+    width: 70%;
+
 }
